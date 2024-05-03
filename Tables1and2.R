@@ -122,4 +122,75 @@ table1_p_RR <- pbrutto1 %>%
 # ------------------------------------------------------------------------------
 # Number of Interviews of Adults, along Waves and offered Languages (Table 2)
 # ------------------------------------------------------------------------------
-# TO BE ADDED
+# function for matching language code with language name
+fun_lang <- function(lang){
+  lang = case_when(
+    lang == 1 ~ "German/English", 
+    lang == 2 ~ "German/Arabic", 
+    lang == 3 ~ "German/Farsi", 
+    lang == 4 ~ "German/Pashtu", 
+    lang == 5 ~ "German/Urdu", 
+    lang == 6 ~ "German/Kurmanji", 
+    lang == 8 ~ "German/French", 
+    TRUE ~ "Without any translation")
+}
+
+# year 2016
+table2_16 <- bgp %>%
+  mutate(age = syear - bgpbirthy, 
+         lang_2016 = fun_lang(pspvers)) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2016) %>%
+  group_by(lang_2016) %>%
+  summarise(N = n())
+
+# year 2017
+table2_17 <- bhp %>%
+  mutate(age = syear - bhpbirthy, 
+         lang_2017 = fun_lang(bhpspvers)) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2017) %>%
+  group_by(lang_2017) %>%
+  summarise(N = n())
+
+# year 2018
+table2_18 <- bip %>%
+  mutate(age = syear - bipbirthy, 
+         lang_2018 = fun_lang(bipspvers)) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2018) %>%
+  group_by(lang_2018) %>%
+  summarise(N = n())
+
+# year 2019
+table2_19 <- bjp %>%
+  mutate(age = syear - bjpbirthy, 
+         lang_2019 = fun_lang(bjpspvers_q154)) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2019) %>%
+  group_by(lang_2019) %>%
+  summarise(N = n())
+
+# year 2020
+table2_20 <- bkp %>%
+  mutate(age = syear - bkpbirthy, 
+         lang_2020 = fun_lang(bkpspvers)) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2020) %>%
+  group_by(lang_2020) %>%
+  summarise(N = n())
+
+# year 2021
+table2_21 <- left_join(instrumentation, pbrutto2, by = c("pid")) %>%
+  mutate(age = syear - geburt_h, 
+         lang_2021 = case_when(
+           start_language == 1 ~ "Without any translation", 
+           start_language == 2 ~ "German/English",
+           start_language == 7 ~ "German/Arabic",
+           start_language == 8 ~ "German/Farsi",
+           TRUE ~ NA
+         )) %>%
+  filter((sample1 == 30 | sample1 == 31 | sample1 == 34 | sample1 == 41) & 
+           age >= 18 & syear >= 2021 & paapor %in% c(1100, 1120, 1210, 1220)) %>%
+  group_by(lang_2021) %>%
+  summarise(N = n())
