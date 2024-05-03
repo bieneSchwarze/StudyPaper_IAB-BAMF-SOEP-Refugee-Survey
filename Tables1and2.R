@@ -27,22 +27,22 @@ library(tidyr)
 # Load necessary data sets from SOEP SUF v38.1
 # ------------------------------------------------------------------------------
 # household data (gros sample)
-hbrutto <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/hbrutto.dta")
-hbrutto_v38 <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38/consolidated14/hbrutto.dta")
+hbrutto <- read_dta(".../soep.v38.1/hbrutto.dta")
+hbrutto_v38 <- read_dta(".../soep.v38/hbrutto.dta")
 # individual data (gross sample)
-pbrutto1 <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/pbrutto.dta")
-pbrutto2 <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/pbrutto.dta") %>%
+pbrutto1 <- read_dta(".../soep.v38.1/pbrutto.dta")
+pbrutto2 <- read_dta(".../soep.v38.1/pbrutto.dta") %>%
   filter(syear == 2021) %>%
   select(pid, geburt_h, paapor) 
-pbrutto_v38 <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38/consolidated14/pbrutto.dta")
+pbrutto_v38 <- read_dta(".../soep.v38/pbrutto.dta")
 # individual data (net sample)
-bgp <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/bgp.dta") # 2016
-bhp <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/bhp.dta") # 2017
-bhp_v38 <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38/consolidated14/bhp.dta") # 2017 ## check
-bip <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/bip.dta") # 2018
-bjp <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/bjp.dta") # 2019
-bkp <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/bkp.dta") # 2020
-instrumentation <- read_dta("//hume/rdc-prod/complete/soep-core/soep.v38.1/consolidated14/instrumentation.dta") %>% # 2021
+bgp <- read_dta(".../soep.v38.1/bgp.dta") # 2016
+bhp <- read_dta(".../soep.v38.1/bhp.dta") # 2017
+bhp_v38 <- read_dta(".../soep.v38/bhp.dta") # 2017 ## check
+bip <- read_dta(".../soep.v38.1/bip.dta") # 2018
+bjp <- read_dta(".../soep.v38.1/bjp.dta") # 2019
+bkp <- read_dta(".../soep.v38.1/bkp.dta") # 2020
+instrumentation <- read_dta(".../soep.v38.1/instrumentation.dta") %>% # 2021
   filter(status == 1 & sample1 %in% c(30, 31, 34, 41) & datatype %in% c(2, 3))
 
 # ------------------------------------------------------------------------------
