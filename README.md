@@ -8,7 +8,7 @@ The supplemental material comprises:
 (i) Source code for producing "Net Case Numbers and Response Rates along Subsamples and Waves (Table 1)" and "Number of Interviews of Adults, along Waves and offered Languages (Table 2)": 
 - *Tables1and2.R* [in R]
   
-(ii) Source code (xxx, in Stata) for producing "Socio-demographics of adult respondents along all waves from 2016 to 2021 (Table 4)", "Migration related characteristics of adult respondents along all waves from 2016 to 2021 (Table 5)", and "Household characteristics of adult respondents along all waves from 2016 to 2021 (Table 6)"
+(ii) Source code (xxx, in Stata) for producing "Socio-demographics of adult respondents along all waves from 2016 to 2022 (Table 4)", "Migration related characteristics of adult respondents along all waves from 2016 to 2022 (Table 5)", and "Household characteristics of adult respondents along all waves from 2016 to 2021 (Table 6)"
  - _PROJECT_MASTER_.do [in Stata]
  - 00_0_config.do [in Stata]
  - 00_1_iso_country_codes_to_refugee_sample.do [in Stata]
